@@ -1,1 +1,0 @@
-it('should render something', () => { })

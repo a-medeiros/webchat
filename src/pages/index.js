@@ -1,6 +1,7 @@
 import Head from 'next/head'
+import Home from '../templates/Home'
 
-export default function Home() {
+export default function Index() {
   return (
     <div>
       <Head>
@@ -8,9 +9,7 @@ export default function Home() {
         <meta property="og:title" content="WebChat" />
         <meta property="og:description" content="O WebChat permite que você se conecte rapidamente à pessoas que possuem interesse no mesmo assunto que você!" />
       </Head>
-      <main>
-        <h2>WebChat</h2>
-      </main>
+      <Home />
     </div>
   )
 }
