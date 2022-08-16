@@ -44,14 +44,12 @@ export default function Home() {
             <Styled.Label htmlFor="room">Sala</Styled.Label>
             <Styled.Select id="room" value={room} onChange={(e) => setRoom(e.target.value)}>
               <option value="">----</option>
-              <option value="futebol">Futebol</option>
-              <option value="volei">Vôlei</option>
-              <option value="basquete">Basquete</option>
-              <option value="series">Séries</option>
-              <option value="filmes">Filmes</option>
-              <option value="animes">Animes</option>
-              <option value="fitness">Fitness</option>
-              <option value="musica">Música</option>
+              <option value="Futebol">Futebol</option>
+              <option value="Séries">Séries</option>
+              <option value="Filmes">Filmes</option>
+              <option value="Animes">Animes</option>
+              <option value="Fitness">Fitness</option>
+              <option value="Música">Música</option>
             </Styled.Select>
             {isRoomEmpty && (
               <>
