@@ -22,6 +22,7 @@ export const RoomName = styled.h1`
 export const ChatMessages = styled.div`
   height: 80%;
   padding: 20px;
+  overflow-y: scroll;
 `;
 
 export const ChatFooter = styled.div`
@@ -64,4 +65,13 @@ export const Message = styled.p`
   color: #204060;
   font-size: 17px;
   font-weight: 600px;
+`;
+
+export const Button = styled.button`
+  width: 20%;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid ${(props) => props.color};
+  background-color: ${(props) => props.color};
 `;

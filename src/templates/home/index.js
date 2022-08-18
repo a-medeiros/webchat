@@ -10,7 +10,6 @@ export default function Home() {
   const [isRoomEmpty, setIsRoomEmpty] = useState(false);
 
   function handleJoinChat(e) {
-    console.log(name, room);
     if (name === '') {
       e.preventDefault();
       setIsNameEmpty(true);
