@@ -5,6 +5,7 @@ import io from 'socket.io-client';
 
 export default function Chat({ name, room }) {
   const socketRef = useRef();
+  const chatRef = useRef();
   const router = useRouter();
   const [messages, setMessages] = useState([]);
   const [userMessage, setUserMessage] = useState('');
@@ -16,6 +17,7 @@ export default function Chat({ name, room }) {
 
     socketRef.current.on('message', (userMessage) => {
       outputMessage(userMessage);
+      chatRef.current.scrollTop = chatRef.current.scrollHeight;
     });
 
     return () => {
@@ -43,7 +45,7 @@ export default function Chat({ name, room }) {
     <Styled.Container>
       <Styled.ChatContainer>
         <Styled.RoomName>{room}</Styled.RoomName>
-        <Styled.ChatMessages>
+        <Styled.ChatMessages ref={chatRef}>
           {messages?.map((item) => (
             <Styled.MessageContainer>
               <Styled.Username>{item.username}</Styled.Username>
