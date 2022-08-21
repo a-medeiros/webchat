@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import Home from '../templates/Home'
+import Head from 'next/head';
+import Home from '../templates/home';
 
 export default function Index() {
   return (

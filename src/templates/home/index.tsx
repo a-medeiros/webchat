@@ -3,13 +3,13 @@ import Link from 'next/link';
 import * as Styled from './styles';
 
 export default function Home() {
-  const [name, setName] = useState('');
-  const [room, setRoom] = useState('');
+  const [name, setName] = useState<string>('');
+  const [room, setRoom] = useState<string>('');
 
-  const [isNameEmpty, setIsNameEmpty] = useState(false);
-  const [isRoomEmpty, setIsRoomEmpty] = useState(false);
+  const [isNameEmpty, setIsNameEmpty] = useState<boolean>(false);
+  const [isRoomEmpty, setIsRoomEmpty] = useState<boolean>(false);
 
-  function handleJoinChat(e) {
+  function handleJoinChat(e: React.ChangeEvent<HTMLInputElement>) {
     if (name === '') {
       e.preventDefault();
       setIsNameEmpty(true);
@@ -32,7 +32,7 @@ export default function Home() {
           <Styled.FormTitle>Bem-vindo ao WebChat!</Styled.FormTitle>
           <Styled.FieldContainer>
             <Styled.Label htmlFor="name">Nome</Styled.Label>
-            <Styled.Input id="name" value={name} onChange={(e) => setName(e.target.value)} />
+            <Styled.Input id="name" value={name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)} />
             {isNameEmpty && (
               <>
                 <Styled.ErrorMessage>Escolha um nome!</Styled.ErrorMessage>
@@ -41,7 +41,7 @@ export default function Home() {
           </Styled.FieldContainer>
           <Styled.FieldContainer>
             <Styled.Label htmlFor="room">Sala</Styled.Label>
-            <Styled.Select id="room" value={room} onChange={(e) => setRoom(e.target.value)}>
+            <Styled.Select id="room" value={room} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setRoom(e.target.value)}>
               <option value="">----</option>
               <option value="Futebol">Futebol</option>
               <option value="Séries">Séries</option>
@@ -61,7 +61,7 @@ export default function Home() {
               pathname: '/room/[room]',
               query: { room, name }
             }}>
-            <Styled.Button onClick={handleJoinChat}>Entrar na sala</Styled.Button>
+            <Styled.Button onClick={() => handleJoinChat}>Entrar na sala</Styled.Button>
           </Link>
         </Styled.Form>
       </Styled.FormContainer>

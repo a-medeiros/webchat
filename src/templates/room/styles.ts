@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { ButtonProps } from './types';
+
 export const Container = styled.main`
   height: 100vh;
   display: flex;
@@ -72,6 +74,6 @@ export const Button = styled.button`
   color: white;
   font-size: 16px;
   cursor: pointer;
-  border: 1px solid ${(props) => props.color};
-  background-color: ${(props) => props.color};
+  border: 1px solid ${(props: ButtonProps) => props.color};
+  background-color: ${(props: ButtonProps) => props.color};
 `;

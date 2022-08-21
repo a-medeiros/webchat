@@ -3,11 +3,13 @@ import { useRouter } from 'next/router';
 import * as Styled from './styles';
 import io from 'socket.io-client';
 
-export default function Chat({ name, room }) {
-  const socketRef = useRef();
-  const chatRef = useRef();
+import { Props, Message } from './types';
+
+export default function Chat({ name, room }: Props) {
+  const socketRef = useRef<any>();
+  const chatRef = useRef<any>();
   const router = useRouter();
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState<Message[] | []>([]);
   const [userMessage, setUserMessage] = useState('');
 
   useEffect(() => {
@@ -15,7 +17,7 @@ export default function Chat({ name, room }) {
 
     socketRef.current.emit('join room', { username: name, room });
 
-    socketRef.current.on('message', (userMessage) => {
+    socketRef.current.on('message', (userMessage: Message) => {
       outputMessage(userMessage);
       chatRef.current.scrollTop = chatRef.current.scrollHeight;
     });
@@ -27,7 +29,7 @@ export default function Chat({ name, room }) {
     };
   }, []);
 
-  function outputMessage(newMessage) {
+  function outputMessage(newMessage: Message) {
     setMessages((oldMessages) => [...oldMessages, newMessage]);
   }
 
