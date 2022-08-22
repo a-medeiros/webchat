@@ -16,24 +16,24 @@ it('should display an error if user clicks on the button and name field is empty
   const user = userEvent.setup();
   render(<Home />);
 
-  const nameInput = screen.getByLabelText('Nome');
+  const nameInput = screen.getByLabelText('Nome') as HTMLInputElement;
   const button = screen.getByRole('button', { name: 'Entrar na sala' });
 
   await user.click(button);
 
   expect(nameInput.value).toBe('');
-  expect(screen.getByText(/Escolha um nome!/i)).toBeInTheDocument();
+  expect(await screen.findByText(/Escolha um nome!/i)).toBeInTheDocument();
 })
 
 it('should display an error message if user clicks on the button and has not selected a room', async () => {
   const user = userEvent.setup();
   render(<Home />);
 
-  const select = screen.getByLabelText('Sala');
+  const select = screen.getByLabelText('Sala') as HTMLInputElement;
   const button = screen.getByRole('button', { name: 'Entrar na sala' });
 
   await user.click(button);
 
   expect(select.value).toBe('');
-  expect(screen.getByText(/Escolha uma sala!/i)).toBeInTheDocument();
+  expect(await screen.findByText(/Selecione uma sala!/i)).toBeInTheDocument();
 })
